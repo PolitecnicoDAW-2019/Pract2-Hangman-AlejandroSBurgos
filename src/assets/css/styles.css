@@ -1,0 +1,70 @@
+body {
+  padding-top: 1em;
+  text-align: center;
+  background-color: #000000;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+canvas {
+  width: 600px;
+  height: 300px;
+  border: 1px solid white;
+}
+#expectedWord {
+  margin-bottom: 1.6em;
+}
+#expectedWord > div {
+  border-bottom: 3px solid white;
+  margin-left: 1em;
+  display: inline-block;
+  width: 2%;
+}
+#characters {
+  margin-bottom: 0.5em;
+}
+.characters {
+  display: inline-block;
+  margin-top: 0.8em;
+  margin-left: 0.2em;
+  border-radius: 8%;
+  width: 3%;
+  padding: 0.5em;
+}
+#restart {
+  margin-top: 2em;
+  color: white;
+  font-size: 2em;
+  cursor: pointer;
+  display: inline-block;
+  background-image: -webkit-linear-gradient(160deg, #c716be, #1ca354);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 10s infinite linear;
+}
+#restart:hover {
+  border-bottom: 2px solid white;
+}
+
+.characters {
+  color: #f35626;
+  margin-bottom: 2em;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 3s infinite linear;
+  cursor: pointer;
+}
+.characters:hover {
+  border-bottom: 1px solid white;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
