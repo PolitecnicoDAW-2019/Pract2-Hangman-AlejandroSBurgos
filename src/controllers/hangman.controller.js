@@ -4,9 +4,6 @@ function HangmanController(hangmanService, hangmanView) {
 
   this.initEvents = function() {
     this.hangmanService.obtainWord();
-    this.hangmanView.printCharactersAsserted(
-      this.hangmanService.getCurrentCharactersAsserted()
-    );
     const playCharacters = this.hangmanService.getPlayCharacters();
     this.hangmanView.initKeyBoard(playCharacters);
     this.hangmanView.initClickEvents(this.obtainCharacter);
@@ -14,9 +11,7 @@ function HangmanController(hangmanService, hangmanView) {
 
   this.assertingWord = function(character) {
     this.hangmanService.setCurrentCharactersAsserted(character);
-    const assertedCharacters = this.hangmanService.getCurrentCharactersAsserted(
-      character
-    );
+    const assertedCharacters = this.hangmanService.getCurrentCharactersAsserted();
     this.hangmanView.printCharactersAsserted(assertedCharacters);
 
     if (this.hangmanService.isWin()) {
@@ -33,7 +28,7 @@ function HangmanController(hangmanService, hangmanView) {
   };
   this.obtainCharacter = event => {
     const character = event.target.innerText;
-
+    this.hangmanView.disableButton(character);
     if (this.hangmanService.checkCharacterIsAsserted(character)) {
       this.assertingWord(character);
     } else {

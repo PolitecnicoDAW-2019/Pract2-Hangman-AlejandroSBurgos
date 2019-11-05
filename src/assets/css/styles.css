@@ -27,9 +27,9 @@ canvas {
 .characters {
   display: inline-block;
   margin-top: 0.8em;
-  margin-left: 0.2em;
+  margin-left: 0.1em;
   border-radius: 8%;
-  width: 3%;
+  width: 1%;
   padding: 0.5em;
 }
 #restart {
@@ -58,6 +58,10 @@ canvas {
 }
 .characters:hover {
   border-bottom: 1px solid white;
+}
+
+button:disabled {
+  color: #000000;
 }
 
 @-webkit-keyframes hue {

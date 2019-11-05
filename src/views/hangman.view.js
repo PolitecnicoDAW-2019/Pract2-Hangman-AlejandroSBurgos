@@ -3,8 +3,9 @@ function HangmanView() {
 
   this.initKeyBoard = function(characters) {
     for (const character of characters) {
-      GUI.divCharacters.innerHTML += `<div class="characters">${character}</div>`;
+      GUI.divCharacters.innerHTML += `<div class="characters" id="$button-{character}">${character}</div>`;
     }
+    GUI.restart.addEventListener('click', this.restartGame);
   };
 
   this.initClickEvents = function(event) {
@@ -89,9 +90,11 @@ function HangmanView() {
       draw: this.drawLines
     }
   };
+  this.disableButton = character => {
+    //window.document.getElementById('button-' + character).disabled = true;
+  };
 
   this.drawLife = life => {
-    //TODO undefined value => this.hangmanElements[life]
     if (life === 5) {
       this.hangmanElements[life].draw();
     } else {
@@ -100,5 +103,7 @@ function HangmanView() {
     }
   };
 
-  this.restartGame = function() {};
+  this.restartGame = function() {
+    window.location.href = 'http://127.0.0.1:5500/index.html';
+  };
 }

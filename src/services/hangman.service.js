@@ -69,24 +69,21 @@ function HangmanService() {
   };
 
   this.isWin = function() {
-    let screenWord = this.currentCharactersAsserted.map(currentCharacter => {
-      currentCharacter = currentCharacter.screen;
-    });
-    screenWord = screenWord.join('');
-    const realWord = this.characters.join('');
-    return screenWord === realWord;
+    return this.currentCharactersAsserted.every(
+      ({ printed }) => printed != ' '
+    );
   };
 
   this.getCurrentCharactersAsserted = function() {
     return this.currentCharactersAsserted;
   };
 
-  this.setCurrentCharactersAsserted = function(currentCharacter) {
-    this.currentCharactersAsserted.map(({ value, printed }) => {
-      if (value == currentCharacter) {
-        printed = currentCharacter;
+  this.setCurrentCharactersAsserted = function(currentCharacter = '') {
+    for (const character of this.currentCharactersAsserted) {
+      if (character.value === currentCharacter) {
+        character.printed = currentCharacter;
       }
-    });
+    }
   };
 
   this.checkCharacterIsAsserted = function(currentCharacter) {
