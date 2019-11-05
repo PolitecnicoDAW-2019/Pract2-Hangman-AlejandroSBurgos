@@ -16,6 +16,7 @@ canvas {
 }
 #expectedWord > div {
   border-bottom: 3px solid white;
+  color: white;
   margin-left: 1em;
   display: inline-block;
   width: 2%;

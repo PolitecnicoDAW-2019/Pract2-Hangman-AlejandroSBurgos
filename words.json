@@ -1,7 +1,7 @@
 [
-  { "word": "Ordenador" },
-  { "word": "Cientifico" },
-  { "word": "Programacion" },
-  { "word": "Tecnologia" },
-  { "word": "Comunicacion" }
+  { "value": "Ordenador" },
+  { "value": "Cientifico" },
+  { "value": "Programacion" },
+  { "value": "Tecnologia" },
+  { "value": "Comunicacion" }
 ]

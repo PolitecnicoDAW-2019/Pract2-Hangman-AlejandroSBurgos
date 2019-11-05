@@ -23,6 +23,7 @@ function HangmanService() {
     'Q',
     'R',
     'S',
+    'T',
     'U',
     'V',
     'W',
@@ -31,35 +32,32 @@ function HangmanService() {
     'Z'
   ];
 
-  this.obtainWord = function() {
-    /*fetch('http://127.0.0.1:5500/words.json')
-      .then(response => response.json())
-      .then(
-        words =>
-          (this.characters = words[Math.floor(Math.random() * words.length)])
-      );*/
-    return { value: 'Tecnologia' };
+  this.obtainWord = async function() {
+    const response = await fetch('http://127.0.0.1:5500/words.json');
+    const words = await response.json();
+    this.word = words[
+      Math.floor(Math.random() * words.length)
+    ].value.toUpperCase();
+    this.setCharacters();
+    console.log('word', this.word);
   };
 
   this.getPlayCharacters = function() {
     return this.playCharacters;
   };
-  this.setWord = function() {
-    const word = this.obtainWord();
-    this.characters = word.value.split('');
+  this.setCharacters = function() {
+    this.characters = this.word.split('');
+    console.log('characters splited', this.characters);
     for (const character of this.characters) {
       this.currentCharactersAsserted = [
         ...this.currentCharactersAsserted,
-        { value: character, screen: ' ' }
+        { value: character, printed: ' ' }
       ];
     }
-    this.word = word.value.toUpperCase();
   };
 
   this.reduceLife = function() {
-    if (!this.isGameOver()) {
-      this.life - 1;
-    }
+    if (!this.isGameOver()) --this.life;
   };
 
   this.getLife = function() {
@@ -76,22 +74,22 @@ function HangmanService() {
     });
     screenWord = screenWord.join('');
     const realWord = this.characters.join('');
-    return screenWord == realWord;
+    return screenWord === realWord;
   };
 
-  this.getCurrentCharactersAsserted = function(currentCharacter) {
-    return this.currentCharactersAsserted.map(character => {
-      if (character.value === currentCharacter) {
-        character.screen = currentCharacter;
+  this.getCurrentCharactersAsserted = function() {
+    return this.currentCharactersAsserted;
+  };
+
+  this.setCurrentCharactersAsserted = function(currentCharacter) {
+    this.currentCharactersAsserted.map(({ value, printed }) => {
+      if (value == currentCharacter) {
+        printed = currentCharacter;
       }
     });
   };
 
   this.checkCharacterIsAsserted = function(currentCharacter) {
-    return this.characters.some(_character => currentCharacter === _character);
-  };
-
-  this.getWordLength = function() {
-    return this.currentCharactersAsserted;
+    return this.characters.some(character => currentCharacter === character);
   };
 }
