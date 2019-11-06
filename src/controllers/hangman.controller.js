@@ -7,13 +7,15 @@ function HangmanController(hangmanService, hangmanView) {
     const playCharacters = this.hangmanService.getPlayCharacters();
     this.hangmanView.initKeyBoard(playCharacters);
     this.hangmanView.initClickEvents(this.obtainCharacter);
+    this.hangmanView.printCharactersAsserted(
+      this.hangmanService.getCurrentCharactersAsserted()
+    );
   };
 
   this.assertingWord = function(character) {
     this.hangmanService.setCurrentCharactersAsserted(character);
     const assertedCharacters = this.hangmanService.getCurrentCharactersAsserted();
     this.hangmanView.printCharactersAsserted(assertedCharacters);
-
     if (this.hangmanService.isWin()) {
       this.hangmanView.printWin();
     }

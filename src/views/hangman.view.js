@@ -3,7 +3,7 @@ function HangmanView() {
 
   this.initKeyBoard = function(characters) {
     for (const character of characters) {
-      GUI.divCharacters.innerHTML += `<div class="characters" id="$button-{character}">${character}</div>`;
+      GUI.divCharacters.innerHTML += `<div class="characters" id="button-${character}">${character}</div>`;
     }
     GUI.restart.addEventListener('click', this.restartGame);
   };
@@ -22,11 +22,11 @@ function HangmanView() {
   };
 
   this.printGameOver = function() {
-    alert('Game Over');
+    alert('YOU LOSE... F =(');
   };
 
   this.printWin = function() {
-    alert('You Win');
+    alert('YOU WIN ;)');
   };
 
   this.drawLines = coordinatePoints => {
@@ -91,7 +91,7 @@ function HangmanView() {
     }
   };
   this.disableButton = character => {
-    //window.document.getElementById('button-' + character).disabled = true;
+    window.document.getElementById('button-' + character).disabled = true;
   };
 
   this.drawLife = life => {

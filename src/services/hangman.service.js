@@ -39,7 +39,6 @@ function HangmanService() {
       Math.floor(Math.random() * words.length)
     ].value.toUpperCase();
     this.setCharacters();
-    console.log('word', this.word);
   };
 
   this.getPlayCharacters = function() {
@@ -47,7 +46,6 @@ function HangmanService() {
   };
   this.setCharacters = function() {
     this.characters = this.word.split('');
-    console.log('characters splited', this.characters);
     for (const character of this.characters) {
       this.currentCharactersAsserted = [
         ...this.currentCharactersAsserted,
